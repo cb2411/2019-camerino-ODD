@@ -17,14 +17,24 @@ def make_example_potion(name):
 
 
 def make_python_expert_potion(name):
+    my_potion = potions.potion.Potion(name=name)
 
-    pass
+    my_potion.setup(container=potions.tools.equipment.pewter_cauldron, heat_source=potions.tools.equipment.fire)
+
+    my_potion.add_ingredients([potions.tools.ingredients.fish_eyes, potions.tools.ingredients.unicorn_hair, potions.tools.ingredients.tea_leaves])
+
+    potions.tools.cooking.simmer(my_potion, duration=2)
+
+    return my_potion
 
 
 if __name__ == '__main__':
 
     my_name = 'Potter'
-    my_potion = make_example_potion(name=my_name)
+    # my_potion = make_example_potion(name=my_name)
+    my_potion = make_python_expert_potion(name=my_name)
+
     # Let Snape inspect the potion
-    potions.tools.inspection.inspection_by_Snape(potion=my_potion, target_potion='example_potion')
+    # potions.tools.inspection.inspection_by_Snape(potion=my_potion, target_potion='example_potion')
+    potions.tools.inspection.inspection_by_Snape(potion=my_potion, target_potion='python_expert')
 
